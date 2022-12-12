@@ -4,8 +4,8 @@ import numpy as np
 
 class Controller:
     def __init__(self):
-        self.kp = 40
-        self.kv = 10
+        self.kp = 50
+        self.kv = 20
         self.pos = None
         self.vel = None
 
@@ -19,6 +19,6 @@ class Controller:
 
 # calculate action u for each time step
 # current just simple pd controller
-    def action(self, puck_pos, puck_vel):
+    def pd_control(self, puck_pos, puck_vel):
         u = self.kp * (puck_pos - self.pos) + self.kv * (puck_vel - self.vel)
         return u
