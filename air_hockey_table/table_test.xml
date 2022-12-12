@@ -70,19 +70,19 @@
         <geom pos="0 0 -0.1" name="floor" size="0 0 0.05" type="plane" material="groundplane"/>
     </worldbody>
 
-    <worldbody>
-        <body name="puck_record" pos="0 0.3 0">
-            <freejoint name="puck_record"/>
-            <geom pos="0 0 0" name="puck_record" type="cylinder" material="blue" size="0.03165 0.00245"
-                  condim="4" friction="0.1 0 0" contype="0" conaffinity="0"/>
-            <geom pos="0.02 0 0" type="sphere" material="red" size="0.01"
-                  condim="4" friction="0.1 0 0" contype="0" conaffinity="0"/>
-            <inertial pos="0 0 0" mass="0.01" diaginertia="2.5e-6 2.5e-6 5e-6"/>
-        </body>
-    </worldbody>
-    <contact>
-        <exclude body1="puck" body2="puck_record"/>
-    </contact>
+<!--    <worldbody>-->
+<!--        <body name="puck_record" pos="0 0.3 0">-->
+<!--            <freejoint name="puck_record"/>-->
+<!--            <geom pos="0 0 0" name="puck_record" type="cylinder" material="blue" size="0.03165 0.00245"-->
+<!--                  condim="4" friction="0.1 0 0" contype="0" conaffinity="0"/>-->
+<!--            <geom pos="0.02 0 0" type="sphere" material="red" size="0.01"-->
+<!--                  condim="4" friction="0.1 0 0" contype="0" conaffinity="0"/>-->
+<!--            <inertial pos="0 0 0" mass="0.01" diaginertia="2.5e-6 2.5e-6 5e-6"/>-->
+<!--        </body>-->
+<!--    </worldbody>-->
+<!--    <contact>-->
+<!--        <exclude body1="puck" body2="puck_record"/>-->
+<!--    </contact>-->
 
     <worldbody>
         <body name="base2" pos="0 0 0">
@@ -96,7 +96,7 @@
         </body>
     </worldbody>
     <contact>
-        <exclude body1="mallet" body2="puck_record"/>
+<!--        <exclude body1="mallet" body2="puck_record"/>-->
         <exclude body1="mallet" body2="table_surface"/>
     </contact>
 
