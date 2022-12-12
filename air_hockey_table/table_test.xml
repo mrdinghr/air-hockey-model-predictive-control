@@ -90,6 +90,7 @@
             <joint name="mallet_y" type="slide" axis="0 1 0" damping="0.005" limited="false"/>
             <joint name="mallet_yaw" type="hinge" axis="0 0 1" damping="2e-6" limited="false"/>
             <body name="mallet">
+                <geom pos="0.02 0 0" type="sphere" material="red" size="0.01" />
                 <geom pos="0 0 0" name="mallet" type="cylinder" material="black" size="0.04815 0.003" condim="4"/>
                 <inertial pos="0 0 0" mass="30" diaginertia="2.5e-6 2.5e-6 5e-6"/>
             </body>

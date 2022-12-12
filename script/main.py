@@ -32,12 +32,12 @@ def main():
         # Set up Puck (Red) Initial State
         mj_data.qpos[0:3] = np.random.rand(3) * 0.5
         mj_data.qvel[:] = 0.
-        mj_data.qvel[0:3] = np.random.rand(3) * 10
+        # mj_data.qvel[0:3] = np.random.rand(3) * 10
 
         # set up Mallet
         mj_data.qpos[-3] = -0.3
         mj_data.qpos[-2] = 0
-
+        mj_data.qvel[-3:] = np.array([3, 3, 0])
         t = 0.
         mujoco.mj_step(mj_model, mj_data, 1)
         mj_viewer.render(mj_data)

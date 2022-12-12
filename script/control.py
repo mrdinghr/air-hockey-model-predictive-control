@@ -4,8 +4,8 @@ import numpy as np
 
 class Controller:
     def __init__(self):
-        self.kp = 50
-        self.kv = 20
+        self.kp = 20
+        self.kv = 0.5
         self.pos = None
         self.vel = None
 
