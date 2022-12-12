@@ -4,8 +4,8 @@ import numpy as np
 
 class Controller:
     def __init__(self):
-        self.kp = 5
-        self.kv = 1
+        self.kp = 40
+        self.kv = 10
         self.pos = None
         self.vel = None
 
@@ -21,4 +21,4 @@ class Controller:
 # current just simple pd controller
     def action(self, puck_pos, puck_vel):
         u = self.kp * (puck_pos - self.pos) + self.kv * (puck_vel - self.vel)
-        return np.append(u, np.zeros(4))
+        return u
