@@ -32,21 +32,21 @@ def main():
         # Set up Puck (Red) Initial State
         mj_data.qpos[0:3] = np.random.rand(3) * 0.5
         mj_data.qvel[:] = 0.
-        # mj_data.qvel[0:3] = np.random.rand(3) * 10
 
         # set up Mallet
         mj_data.qpos[-3] = -0.3
         mj_data.qpos[-2] = 0
-        mj_data.qvel[-3:] = np.array([3, 3, 0])
         t = 0.
         mujoco.mj_step(mj_model, mj_data, 1)
         mj_viewer.render(mj_data)
-        while t < 2:
+        init_puck_pos = np.copy(mj_data.qpos[0:2])
+        init_puck_vel = np.copy(mj_data.qvel[0:2])
+        while t < 5:
             controller.reset(mj_data.qpos[-3:-1], mj_data.qvel[-3:-1])
             if has_coll:
                 mj_data.qvel[3:] = 0.
             else:
-                u = controller.pd_control(mj_data.qpos[0:2], mj_data.qvel[0:2])
+                u = controller.pd_control(init_puck_pos, init_puck_vel)
                 u = np.append(np.zeros(3), u)
                 u = np.append(u, 0)
                 mj_data.qfrc_applied = u
@@ -54,8 +54,8 @@ def main():
             mj_viewer.render(mj_data)
             if mj_model.geom('puck').id in mj_data.contact.geom1:
                 print("contact")
-            if check_hit(mj_data.contact, mj_data.geom('puck').id, mj_data.geom('mallet').id):
-                has_coll = True
+            # if check_hit(mj_data.contact, mj_data.geom('puck').id, mj_data.geom('mallet').id):
+            #     has_coll = True
             t += 0.001
             time.sleep(1 / 1000)
             if out_of_boundary(mj_data.qpos[0:3]):
